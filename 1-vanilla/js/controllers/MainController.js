@@ -27,7 +27,6 @@ export default {
       .on('@remove', e => this.onRemoveHistory(e.detail.keyword))
 
     ResultView.setup(document.querySelector('#search-result'))
-      .on('@click',e=>this.onClickIcon())
     this.selectedTab = '추천 검색어'
     this.renderView()
   },
