@@ -15,7 +15,7 @@ export default {
     FormView.setup(document.querySelector('form'))
       .on('@submit', e => this.onSubmit(e.detail.input))
       .on('@reset', e => this.onResetForm())
-
+    
     TabView.setup(document.querySelector('#tabs'))
       .on('@change', e => this.onChangeTab(e.detail.tabName))
 
@@ -29,6 +29,7 @@ export default {
     ResultView.setup(document.querySelector('#search-result'))
     this.selectedTab = '추천 검색어'
     this.renderView()
+
   },
 
   renderView() {

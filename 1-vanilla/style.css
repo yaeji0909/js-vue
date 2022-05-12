@@ -12,11 +12,17 @@ img {
 .container {
   margin: 0 15px 0 15px;
 }
+
 header {
   border-bottom: 1px #ccc solid;
   padding: 15px 0  15px 0;
   text-align: center;
 }
+
+header h2{
+  cursor: pointer;
+}
+
 input[type=text] {
   display: block;
   box-sizing: border-box;
