@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>MVC with Vanilla.JS</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <div id="app">
+    <header>
+      <h2 class="container">😺 고양이 검색기 😺</h2>
+    </header>
+
+    <div class="container">
+  <search-form></search-form>
+    <div v-if="submitted">
+      <div v-if="searchResult.length">
+        <ul>
+          <li v-for="item in searchResult">
+            <img v-bind:src="item.image"> {{item.name}}
+          </li>
+        </ul>
+     </div>
+      <div v-else>
+        {{query}} 검색어로 찾을 수 없습니다.
+      </div>
+    </div>
+<div v-else>
+  <ul class="tabs">
+    <li v-for="tab in tabs" :class="{active:tab === selectedTab}" v-on:click="onClickTab(tab)">
+      {{tab}}
+    </li>
+  </ul>
+
+  <div v-if="selectedTab === tabs[0]">
+      <div v-if="keywords.length">
+        <ul class="list">
+          <li v-for="(item , index) in keywords" v-on:click="onClickKeyword(item.keyword)">
+            <span class="number">{{index+1}}</span>
+            {{item.keyword}}
+          </li>
+        </ul>
+      </div>
+      <div v-else>
+      추천 검색어가 없습니다.
+    </div>
+  </div>
+
+  <div v-else>
+   <div v-if="history.length">
+     <ul class="list">
+       <li v-for="item in history" v-on:click="onClickKeyword(item.keyword)">
+         {{item.keyword}}
+         <span class="date">{{item.date}}</span>
+         <button class="btn-remove" v-on:click.stop="onClickRemoveHistory(item.keyword)"></button>
+       </li>
+     </ul>
+   </div>
+      <div v-else>
+       최근 검색어가 없습니다.
+      </div>
+    </div>
+    </div>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script type="module" src="./js/app.js"></script>
+</body>
+</html>
+
+
+
+<template id="search-form">
+  <form v-on:submit.prevent="onSubmit">
+    <input type="text" v-model="query" v-on:keyup="onKeyup" placeholder="검색어를 입력하세요" autofocus>
+    <button v-show="query.length" v-on:click="onReset" type="reset" class="btn-reset"></button>
+  </form>
+</template>

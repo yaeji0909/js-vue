@@ -26,6 +26,7 @@ ResultView.getSearchResultsHtml = function (data) {
 }
 
 ResultView.getSearchItemHtml = function (item) {
+  
   return `<li>
     <img src="${item.image}" />
     <p class="itemName">${item.name}</p>
