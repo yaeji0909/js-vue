@@ -29,6 +29,10 @@ new Vue({
     onReset(e) {
       this.resetForm()
     },
+    onClickRemoveHistory(keyword){
+        HistoryModel.remove(keyword)
+        this.fetchHistory()
+    },
     onClickTab(tab){
       this.selectedTab = tab
     },
@@ -51,6 +55,8 @@ new Vue({
         this.submitted=true
         this.searchResult = data
       })
+      HistoryModel.add(this.query)
+      this.fetchHistory()
     },
     resetForm() {
       this.query = ''

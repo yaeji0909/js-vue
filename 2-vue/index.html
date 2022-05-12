@@ -10,7 +10,7 @@
 <body>
   <div id="app">
     <header>
-      <h2 class="container">검색</h2>
+      <h2 class="container">😺 고양이 검색기 😺</h2>
     </header>
 
     <div class="container">
@@ -57,8 +57,8 @@
      <ul class="list">
        <li v-for="item in history" v-on:click="onClickKeyword(item.keyword)">
          {{item.keyword}}
-         <span class="data">{{item.date}}</span>
-         <button class="btn-remove"></button>
+         <span class="date">{{item.date}}</span>
+         <button class="btn-remove" v-on:click.stop="onClickRemoveHistory(item.keyword)"></button>
        </li>
      </ul>
    </div>
