@@ -88,13 +88,13 @@ new Vue({
     fetchHistory() {
       HistoryModel.add(document.cookie)
       HistoryModel.list().then((data) => {
-        this.history = data;
+      this.history = data;
       });
     },
     search() {
       SearchModel.list().then((data) => {
-        this.submitted = true;
-        this.searchResult = [...data];
+          this.submitted = true;
+          this.searchResult = data;
       });
       HistoryModel.add(this.findWord);
       this.fetchHistory();

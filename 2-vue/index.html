@@ -30,7 +30,7 @@
           <div v-if="searchResult.length">
             <ul >
               <li v-for="(item,i) in searchResult" >
-                <img  v-bind:src="item.image"> {{item.name}}
+                <img :src="item.image"> {{item.name}}
               </li>
             </ul>
           </div>
