@@ -7,12 +7,11 @@ new Vue({
   data: {
     findWord: "",
     submitted: false,
-    tabs: ["추천 검색어", "최근 검색어"],
-    items: ["러시안블루", "고등어", "치즈", "삼색이"],
+    tabs: ["인기 검색어", "최근 검색어"],
+    items: ['러시안블루','치즈', '오드아이', '고등어' ],
     selectedTab: "",
     keywords: [],
     history: [],
-    cookieData:[],
     searchResult: [],
   },
 
@@ -48,6 +47,9 @@ new Vue({
       date.setTime(date.getTime() + day * 24 * 60 * 60 * 1000);
       document.cookie =
         name + "=" + value + ";expires=" + date.toUTCString() + ";path=/";
+    },
+    addCookie(id) { 
+      const items = this.getCookie('productItems'); 
     },
     getCookie(name) { 
         const value = document.cookie.match('(^|;) ?' + name + '=([^;]*)(;|$)');
@@ -92,7 +94,7 @@ new Vue({
     search() {
       SearchModel.list().then((data) => {
         this.submitted = true;
-        this.searchResult = data;
+        this.searchResult = [...data];
       });
       HistoryModel.add(this.findWord);
       this.fetchHistory();

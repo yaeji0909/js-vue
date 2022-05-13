@@ -1,9 +1,9 @@
 export default {
   data: [
     {keyword: '러시안블루'}, 
-    {keyword: '고등어'}, 
     {keyword: '치즈'}, 
-    {keyword: '삼색이'}
+    {keyword: '오드아이'}, 
+    {keyword: '고등어'}
   ],
 
   list() {
