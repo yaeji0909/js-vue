@@ -22,11 +22,11 @@ const data = [
 ]
 
 export default {
-  list(query) {
+  list(findWord) {
     return new Promise(res => {
       setTimeout(()=> {
         res(data)
       }, 200);
     })
-  }
+  },
 }

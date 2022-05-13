@@ -1,8 +1,6 @@
 export default {
   data: [
-    { keyword: '1등 고양이', date: '12.03' },
-    { keyword: '2등 고양이', date: '12.02'},
-    { keyword: '3등 고양이', date: '12.01' },
+
   ],
 
   list() {

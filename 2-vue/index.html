@@ -12,26 +12,30 @@
 <body>
   <div id="app">
     <header>
-      <h2 class="container">😺 고양이 검색기 😺</h2>
+      <h2 class="container" v-on:click="onClickTitle">😺 고양이 검색기 😺</h2>
     </header>
 
     <div class="container">
-      <form v-on:submit.prevent="onSubmit">
-        <input type="text" v-model="query" v-on:keyup="onKeyup" placeholder="검색어를 입력하세요" autofocus>
-        <button v-show="query.length" v-on:click="onReset" type="reset" class="btn-reset"></button>
+      <form @submit.prevent="onSubmit">
+        <input type="text" v-model="findWord" v-on:keyup="onKeyup" placeholder="검색어를 입력하세요" autofocus>
+        <button v-show="findWord.length" v-on:click="onReset" type="reset" class="btn-reset"></button>
+        <ul>
+            <li  v-for="item in findItems">{{item}}</li>
+        </ul>
+
       </form>
 
       <div class="content">
         <div v-if="submitted">
           <div v-if="searchResult.length">
-            <ul>
-              <li v-for="item in searchResult">
-                <img v-bind:src="item.image"> {{item.name}}
+            <ul >
+              <li v-for="(item,i) in searchResult" >
+                <img  v-bind:src="item.image"> {{item.name}}
               </li>
             </ul>
           </div>
           <div v-else>
-            {{query}} 검색어로 찾을 수 없습니다.
+            {{findWord}} 검색어로 찾을 수 없습니다.
           </div>
         </div>
         <div v-else>
